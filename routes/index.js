@@ -20,4 +20,9 @@ index.get('/', (req,res)=>{
     res.render('index',{messages : messages})
 })
 
+index.post('/new', (req,res)=>{
+   messages.push({text: req.body.message, user: req.body.name, date: new Date()})
+   res.redirect('/')
+})
+
 module.exports = index
