@@ -1,5 +1,6 @@
 const {Router} = require('express')
 const index = Router();
+const indexController = require('../controllers/indexController')
 
 const messages = [
     {
@@ -16,22 +17,12 @@ const messages = [
 
 ]
 
-index.get('/', (req,res)=>{
-    res.render('index',{messages : messages})
-  
-})
+index.get('/', indexController.getAllmessages)
 
-index.get('/message/:id', (req,res)=>{
-    const id = req.params.id
-   const detailedMessage = messages.find((message,index)=> id == index)
-    res.render('message',{detailedMessage})}
-)
+index.get('/message/:id', indexController.openMessage)
 
 
 
-index.post('/new', (req,res)=>{
-   messages.push({text: req.body.message, user: req.body.name, date: new Date()})
-   res.redirect('/')
-})
+index.post('/new', indexController.insertMessage)
 
 module.exports = index

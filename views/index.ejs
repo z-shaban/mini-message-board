@@ -8,11 +8,11 @@
 <body>
     <h1>Mini Message Board</h1>
     <button onclick="window.location.href='/new'">Add New Message</button>
-    <% messages.forEach((message, index) => { %>
-    <p>Name: <%= message.user %> </p>
+    <% messages.forEach((message) => { %>
+    <p>Name: <%= message.username %> </p>
     <p>Text: <%= message.text %> </p>
     <p>Date: <%= message.date %> </p>
-    <button onclick= "window.location.href='/message/ <%= index %>'">OPEN</button>
+    <button onclick= "window.location.href='/message/<%= message.id %>'">OPEN</button>
     <% }) %>
 </body>
 </html>
